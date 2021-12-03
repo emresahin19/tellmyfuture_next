@@ -1,0 +1,818 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+:root{
+    --main: #313131;
+    --main-passive: #aeaeae;
+    --second: #9b9b9b;
+    --second-passive: #457f8d;
+    --text: #161616;
+    --second-text: #bea6a0;
+    --border: rgba(0, 0, 0, 0.275);
+    --card-first: #720000;
+    --card-second: #ff4b2f;
+    --background: #000;
+
+    --color-txt: #ddd;
+    
+}
+.App-particles__container {
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 0;
+}
+.App-particles__container canvas {
+    transition: 0.2s all ease-in-out;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+.glass-body {
+    background-attachment: fixed; 
+    background-size: cover;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('../public/img/spacebg.jpg');
+  }
+  
+  .glass {
+    width: 31rem;
+    height: 31rem;
+    border-radius: 1rem;
+    position: relative;
+    z-index: 1;
+    background: inherit;
+    overflow: hidden;
+  }
+  
+  .glass:before {
+    content: "";
+    position: absolute;
+    background: inherit;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    margin: -20px;
+    filter: blur(0px);
+    transition: .5s all;
+  }
+  .glass-after {
+    width: calc(17vw + 17vh);
+    height: calc(17vw + 17vh);
+    border-radius: 1rem;
+    position: relative;
+    z-index: 1;
+    background: inherit;
+    overflow: hidden;
+    transition: .3s all;
+  }
+  .glass-after.fullscreen {
+    height: calc(34vw + 34vh);
+    width: calc(34vw + 34vh);
+  }
+  .glass-after:before {
+    content: "";
+    position: absolute;
+    background: inherit;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: rgba(90, 90, 99, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    margin: -20px;
+    filter: blur(7px);
+    transition: .5s all;
+  }
+  .rainbow-m-horizontal_xx-large {
+    margin-right: 3rem;
+    margin-left: 3rem;
+  }
+  .rainbow-p-horizontal_xx-large {
+    padding-right: 3rem;
+    padding-left: 3rem;
+  }
+  .rainbow-p-vertical_large {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+  }
+  .calendar {
+    height: auto;
+    padding: calc(.5vw + .5vh);
+    position: relative;
+    overflow: hidden;
+    /* transform: scale(1.25); */
+}
+
+.light .calendar {
+    box-shadow: var(--shadow);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: calc(1vw + 1vh);
+    font-weight: 600;
+    color: var(--color-txt);
+    padding: calc(.3vw + .3vh) calc(.3vw + .3vh) 0 calc(.8vw + .8vh);
+}
+
+.calendar-body {
+    padding:calc(0.7vw + 0.7vh);
+}
+
+.calendar-week-day {
+    height: calc(1.4vw + 1.4vh);
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    font-weight: 600;
+    cursor: default;
+}
+
+.calendar-week-day div {
+    display: grid;
+    place-items: center;
+    color: var(--color-txt);
+    font-size: calc(0.7vw + 0.7vh);
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    color: var(--color-txt);
+    padding-top: calc(0.3vw + 0.3vh);
+}
+
+.calendar-days div {
+    width: calc(1.6vw + 1.6vh);
+    height: calc(1.6vw + 1.6vh);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    position: relative;
+    cursor: pointer;
+    animation: to-top 1s forwards;
+    font-weight: 600;
+    margin: auto;
+    font-size: calc(0.6vw + 0.6vh);
+}
+.active-day {
+    font-size: calc(0.7vw + 0.7vh) !important;
+    color: #fff !important;
+    text-shadow: 0px 0px 5px #000;
+    font-weight: 800;
+}
+.calendar-days div span {
+    position: absolute;
+}
+
+.calendar-days div:hover span {
+    transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+}
+
+.calendar-days div span:nth-child(1),
+.calendar-days div span:nth-child(3) {
+    width: 2px;
+    height: 0;
+    background-color: var(--color-txt);
+}
+
+.calendar-days div:hover span:nth-child(1),
+.calendar-days div:hover span:nth-child(3) {
+    height: 100%;
+}
+
+.calendar-days div span:nth-child(1) {
+    bottom: 0;
+    left: 0;
+}
+
+.calendar-days div span:nth-child(3) {
+    top: 0;
+    right: 0;
+}
+
+.calendar-days div span:nth-child(2),
+.calendar-days div span:nth-child(4) {
+    width: 0;
+    height: 2px;
+    background-color: var(--color-txt);
+}
+
+.calendar-days div:hover span:nth-child(2),
+.calendar-days div:hover span:nth-child(4) {
+    width: 100%;
+}
+
+.calendar-days div span:nth-child(2) {
+    top: 0;
+    left: 0;
+}
+
+.calendar-days div span:nth-child(4) {
+    bottom: 0;
+    right: 0;
+}
+
+.calendar-days div:hover span:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.calendar-days div:hover span:nth-child(3) {
+    transition-delay: 0.4s;
+}
+
+.calendar-days div:hover span:nth-child(4) {
+    transition-delay: 0.6s;
+}
+.calendar-days div.curr-date span {
+    display: none;
+}
+.curr-date:hover {
+    color: #fff;
+    text-shadow: 0px 0px 4px #000;
+    transition: .3s cubic-bezier(.17,.84,.44,1) all;
+}
+.month-picker {
+    cursor: pointer;
+    z-index: 99;
+    color: var(--color-txt);
+    transition: .3s color;
+}
+
+.month-picker:hover {
+    color: #fff;
+    text-shadow: 0px 0px 4px #000;
+    transition: .3s cubic-bezier(.17,.84,.44,1) all;
+}
+
+.year-picker {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: calc(1vw + 1vh);
+}
+
+.month-list {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: var(--bg-main);
+    padding: calc(1vw + 1vh);
+    grid-template-columns: repeat(3, auto);
+    gap: 15px;
+    display: grid;
+    transform: scale(2);
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.2s ease-in-out;
+    opacity: 0;
+}
+
+.month-list.show {
+    transform: scale(1);
+    visibility: visible;
+    pointer-events: visible;
+    transition: all 0.2s ease-in-out;
+    z-index: 999;
+    opacity: 1;
+}
+.submit-button.unshow {
+    transition: cubic-bezier(0.215, 0.610, 0.355, 1) all .2s;
+    transform: scale(2);
+    opacity: 0;
+}
+.calendar.unshow {
+    transition: cubic-bezier(0.215, 0.610, 0.355, 1) all .2s;
+    transform: scale(2);
+    opacity: 0;
+    display: none;
+}
+.submit-button.show {
+    transition: cubic-bezier(0.215, 0.610, 0.355, 1) all .2s;
+    transform: scale(1);
+    opacity: 1;
+}
+.calendar.show {
+    transition: cubic-bezier(0.215, 0.610, 0.355, 1) all .2s;
+    transform: scale(1);
+    opacity: 1;
+}
+.clock-button.unshow {
+    transition: cubic-bezier(0.215, 0.610, 0.355, 1) all .2s;
+    transform: scale(2);
+    opacity: 0;
+}
+.clock-button.show {
+    transition: cubic-bezier(0.215, 0.610, 0.355, 1) all .2s;
+    transform: scale(1);
+    opacity: 1;
+}
+.unshow .timepicker {
+    transition: cubic-bezier(0.215, 0.610, 0.355, 1) all .2s;
+    transform: scale(2);
+    opacity: 0;
+    z-index: -1;
+}
+.show .timepicker {
+    transition: cubic-bezier(0.215, 0.610, 0.355, 1) all .2s;
+    transform: scale(1);
+    opacity: 1;
+    z-index: 1;
+}
+.month-list > div {
+    display: grid;
+    place-items: center;
+    background: #0d0e4ba6;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    width: calc(4.7vw + 4.7vh);
+    font-size: calc(.7vw + .7vh);
+    font-weight: 600;
+    color: var(--color-txt);
+    transition: all 0.3s;
+}
+
+.month-list > div > div {
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    color: var(--color-txt);
+}
+.month-list > div:hover {
+    background-color: #0d0e4bc5;
+    transform: scale(1.05);
+}
+
+@keyframes to-top {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.calendar-day-hover:hover {
+    background-color: #d8b8d8;
+    border-radius: 2rem;
+}
+.year:hover {
+    background:#d8b8d8;
+    color: #12316fc7;
+}
+
+.form-select:focus {
+    border-color:#d8b8d8;
+    border-radius: 10px;
+}
+.year-option {
+    background-color: #bbd8e280;
+    color: #12316f;
+    font-weight: 600;
+    opacity: 0.5;
+}
+#year {
+    background-color: #bbd8e280;
+    color: #12316f;
+    font-weight: 600;
+}
+
+.timepicker {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    display: grid;
+    justify-content: center;
+}
+
+.clock-button, .submit-button, .map-button{
+    position: absolute;
+    bottom: 0;
+    z-index: 999;
+    border-radius: 10px;
+    color: var(--color-txt);
+    transition: .3s color;
+    font-size: calc(1vw + 1vh);
+    text-align: center;
+    padding: calc(.5vw + .5vh) calc(1vw + 1vh);
+}
+.clock-button a:hover, .map-button a:hover, .submit-button a:hover, .react-select__single-value:hover {
+    color: #fff;
+    text-shadow: 0px 0px 4px #000;
+    transition: .3s cubic-bezier(.17,.84,.44,1) all;
+}
+.clock-button-active, .map-button-active {
+    position: absolute;
+    bottom: 0;
+    z-index: 999;
+    border-radius: 10px;
+    color: #000;
+    transition: .3s color;
+    font-size: calc(1vw + 1vh);
+    text-align: center;
+    padding: calc(.5vw + .5vh) calc(1vw + 1vh);
+}
+.clock-button-active a:hover, .map-button-active a:hover, .map-button-active a:hover {
+    text-shadow: 0px 0px 4px rgba(218, 218, 218, 0.445);
+    transition: .3s cubic-bezier(.17,.84,.44,1) all;
+}
+.clock-button a, .clock-button-active a,
+.map-button a, .map-button-active a ,
+.submit-button a {
+    cursor: pointer;
+    font-weight: 600;
+}
+.clock-button span, .clock-button-active span,
+.map-button span, .map-button-active span,
+.submit-button span {
+    font-size: calc(0.8vw + 0.8vh);
+    font-weight: 600;
+    cursor: default;
+}
+.clock-button span {
+    margin-left: 5px;
+    font-size: calc(0.7vw + 0.7vh);
+}
+.map-button, .map-button-active {
+    left: 0;
+    right: 0;
+    z-index: 9;
+}
+.submit-button {
+    right: 0;
+    z-index: 10;
+}
+.clock-button {
+    left: 0;
+    z-index: 10;
+}
+.glass-footer {
+    transition: .5s all;
+    transition-delay: .3s;
+    bottom: 10px;
+    position: absolute;
+    display: flex;
+    width: 100%;
+}
+.react-select__option {
+    font-size: calc(0.7vw + 0.7vh) !important;
+}
+.react-select__option:hover {
+    color: #000 !important;
+    background: rgba(255, 255, 255, 0.5);
+}
+.react-select__indicators {
+    display: none !important;
+}
+.react-select__menu, .react-select__control {
+    background: transparent !important;
+    text-align: end;
+}
+.react-select__menu-list {
+    background: #0d0e4ba6 !important;
+    z-index: 999;
+    position: inherit;
+}
+.react-select__placeholder, .react-select__single-value, .react-select__input, .react-select__option {
+    color: var(--color-txt) !important;
+    cursor: pointer;
+}
+.year-picker:hover .react-select__single-value {
+    color: #fff !important;
+    text-shadow: 0px 0px 4px #000;
+    transition: .3s cubic-bezier(.17,.84,.44,1) all;
+}
+.timepicker svg {
+    width: 100%;
+    height: 100%;
+}
+.timepicker {
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+.timepicker-bubble {
+    cursor: pointer;
+}
+
+.timepicker-bubble circle {
+    r: 15;
+
+    fill: #0d0e4b ;
+
+    opacity: 0.75;
+
+    -webkit-transition: fill 0.25s linear, opacity 0.25s linear;
+       -moz-transition: fill 0.25s linear, opacity 0.25s linear;
+         -o-transition: fill 0.25s linear, opacity 0.25s linear;
+            transition: fill 0.25s linear, opacity 0.25s linear;
+}
+
+.timepicker-bubble.small circle {
+    r: 0;
+
+    fill: none;
+
+    -webkit-transition: r 0.25s linear;
+       -moz-transition: r 0.25s linear;
+         -o-transition: r 0.25s linear;
+            transition: r 0.25s linear;
+}
+
+.timepicker-bubble.small.active circle {
+    r: 5;
+
+    -webkit-transition-delay: 0.25s;
+       -moz-transition-delay: 0.25s;
+         -o-transition-delay: 0.25s;
+            transition-delay: 0.25s;
+
+    -webkit-transition-duration: 0.1s;
+       -moz-transition-duration: 0.1s;
+         -o-transition-duration: 0.1s;
+            transition-duration: 0.1s;
+}
+
+.timepicker-bubble.small circle + circle {
+    r: 10;
+
+    fill: transparent;
+}
+
+.timepicker-bubble:hover circle,
+.timepicker-bubble.active circle {
+    opacity: 1;
+
+    fill: #0d0e4b;
+}
+
+.timepicker-bubble text {
+    fill: #ffffff;
+
+    font-family: monospace;
+
+    text-anchor:       middle;
+    dominant-baseline: middle;
+}
+
+.timepicker-hand {
+    opacity: 1;
+
+    stroke: #0d0e4b ;
+    stroke-width: 3;
+    stroke-linecap: round;
+
+    -webkit-transition-duration: 0.25s;
+       -moz-transition-duration: 0.25s;
+         -o-transition-duration: 0.25s;
+            transition-duration: 0.25s;
+
+    -webkit-transition-timing-function: linear;
+       -moz-transition-timing-function: linear;
+         -o-transition-timing-function: linear;
+            transition-timing-function: linear;
+}
+
+.timepicker-visible,
+.timepicker-invisible {
+    -webkit-transform-origin: center;
+       -moz-transform-origin: center;
+        -ms-transform-origin: center;
+         -o-transform-origin: center;
+            transform-origin: center;
+
+    -webkit-transition: opacity 0.5s linear, visibility 0.5s linear, -webkit-transform 0.25s linear;
+            transition: opacity 0.5s linear, visibility 0.5s linear, -webkit-transform 0.25s linear;
+       -moz-transition: opacity 0.5s linear, transform 0.25s linear, visibility 0.5s linear, -moz-transform 0.25s linear;
+         -o-transition: opacity 0.5s linear, transform 0.25s linear, visibility 0.5s linear, -o-transform 0.25s linear;
+            transition: opacity 0.5s linear, transform 0.25s linear, visibility 0.5s linear;
+            transition: opacity 0.5s linear, transform 0.25s linear, visibility 0.5s linear, -webkit-transform 0.25s linear, -moz-transform 0.25s linear, -o-transform 0.25s linear;
+}
+
+.timepicker-invisible {
+    opacity: 0;
+
+    visibility: hidden;
+
+    -webkit-transform: scale(0.75);
+       -moz-transform: scale(0.75);
+        -ms-transform: scale(0.75);
+         -o-transform: scale(0.75);
+            transform: scale(0.75);
+}
+
+.timepicker-visible {
+    opacity: 1;
+
+    visibility: visible;
+
+    -webkit-transform: scale(1);
+       -moz-transform: scale(1);
+        -ms-transform: scale(1);
+         -o-transform: scale(1);
+            transform: scale(1);
+}
+
+.timepicker-info {
+    color: #bac0c5;
+
+    margin: 0;
+
+    font-size:    2em;
+    line-height:  1em;
+    font-weight: bold;
+
+    text-align: center;
+}
+
+.timepicker-info-digits {
+    cursor: pointer;
+
+    -webkit-transition: color 0.25s linear;
+       -moz-transition: color 0.25s linear;
+         -o-transition: color 0.25s linear;
+            transition: color 0.25s linear;
+}
+
+.timepicker-info-digits.active {
+    color: #7a3dd3 ;
+}
+.screen-on {
+    width: 100%;
+    height: 100%;
+}
+.screen-off {
+    display: none;
+}
+.options-button {
+    position: absolute;
+    right: calc(1vw + 1vh);
+    top: calc(.8vw + .8vh);
+    font-size: 26px;
+    color: var(--color-txt);
+    z-index: 9999;
+    cursor: pointer;
+}
+.options.unshow {
+    opacity: 0;
+}
+.options.show {
+    opacity: 1;
+}
+.options {
+    height: calc(15vw + 15vh);
+    width: calc(12vw + 12vh);
+    background: #fff;
+    position: absolute;
+    right: calc(2vw + 2vh);
+    top: calc(2vw + 2vh);
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    z-index: 999;
+    transition: cubic-bezier(0.215, 0.610, 0.355, 1) .3s all;
+}
+
+.rcp {
+    transition: all 0.3s ease 0s;
+    overflow: hidden;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+.palette-body {
+    transition: all 0.3s ease 0s;
+    transform-origin: 100% 0% 0px;
+    position: absolute;
+    top: calc(0.7vw + 0.7vh);
+    right: calc(10.7vw + 10.7vh);
+    z-index: 999;
+}
+.palette-body.unshow {
+    transform: scale(0);
+}
+.palette-body.show {
+    transform: scale(1);
+}
+.open-palette {
+    padding: calc(0.4vw + 0.4vh) calc(0.2vw + 0.2vh);
+    list-style: none;
+    max-height: calc(15vw + 15vh);
+    height: 100%;
+    transition: .3s all;
+}
+.open-palette.opened {
+    max-height: calc(15vw + 15vh);
+}
+.open-palette.closed {
+    max-height: 0vh;
+}
+.option-1 {
+    padding: calc(0.2vw + 0.2vh) calc(0.4vw + 0.4vh);
+    display: flex;
+    cursor: default;
+    position: relative;
+}
+.option-1 a {
+    font-weight: 800;
+    font-size: calc(0.7vw + 0.7vh);
+    margin-left: calc(0.7vw + 0.7vh);
+}
+.option-color {
+    content: '';
+    width: calc(0.7vw + 0.7vh);
+    height: calc(0.7vw + 0.7vh);
+    position: relative;
+    display: flex;
+    border-radius: 50%;
+    cursor: pointer;
+    left: calc(.5vw + .5vh);
+    margin-top: calc(0.1vw + 0.1vh);
+}
+.ok-button {
+    font-weight: 800;
+    font-size: calc(0.7vw + 0.7vh);
+    color: var(--color-txt);
+    cursor: pointer;
+}
+.cancel-button {
+    font-weight: 800;
+    font-size: calc(0.7vw + 0.7vh);
+    color: var(--color-txt);
+    cursor: pointer;
+}
+.color-buttons {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: calc(1.2vw + 1.2vh);
+    background: #181818;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-left: calc(0.2vw + 0.2vh);
+}
+.fullscreen-button {
+    position: absolute;
+    right: calc(0.3vw + 0.3vh);
+    top: calc(0.4vw + 0.4vh);
+    font-size: calc(0.7vw + 0.7vh);
+    color: var(--color-txt);
+    z-index: 9999;
+    cursor: pointer;
+}
+.fullscreen .fullscreen-button {
+    font-size: calc(1vw + 1vh);
+}
+.back-button {
+    position: absolute;
+    left: calc(.4vw + 0.4vh);
+    top: calc(0.4vw + 0.4vh);
+    font-size: calc(0.8vw + 0.8vh);
+    color: var(--color-txt);
+    z-index: 9999;
+    cursor: pointer;
+}

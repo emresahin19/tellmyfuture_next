@@ -1,0 +1,12 @@
+{
+  "../components/main.js -> ./map": {
+    "id": 35678,
+    "files": [
+      "static/chunks/678.b4d6e661af7a039d6036.js"
+    ]
+  },
+  "test.js -> ../components/skymap/sky.js": {
+    "id": 98906,
+    "files": []
+  }
+}
