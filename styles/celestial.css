@@ -29,11 +29,10 @@ input[type="number"]::-webkit-outer-spin-button { height: auto; }
 #celestial-form input[type='text'] { width:194px; height:18px; text-align:left; padding-left:2px; }
 #celestial-form input[type='checkbox'] { vertical-align: -2px; }
 #celestial-form input[type='color'] { width:48px; vertical-align: -3px; height:22px;  background:#fff; }
-#celestial-form #datepick { position:relative; display:inline-block; _vertical-align:-8px; top:7px; left:-31px; width:28px; height:24px; border:0px none; border-left:1px solid #ccc; background-color: #f7f7f7; background-image: url('images/dtpick.png'); background-position: -45px 1px; cursor:default; }
+#celestial-form #datepick { position:relative; display:inline-block; _vertical-align:-8px; top:7px; left:-31px; width:28px; height:24px; border:0px none; border-left:1px solid #ccc; background-color: #f7f7f7; background-position: -45px 1px; cursor:default; }
 #celestial-form #datepick.active { background-position: -69px 1px; }
 #celestial-form #datetime { cursor:default; } 
 #celestial-form input#now { position:relative; left:-24px; }
-#celestial-form #constellation { } 
 #celestial-form select option { color:#000; } 
 #celestial-form select option[value='---'] { color:#ccc; } 
 
@@ -80,8 +79,8 @@ input[type="number"]::-webkit-outer-spin-button { height: auto; }
 #celestial-date { position:absolute; top:-9999px; width:193px; text-align:center; border:1px solid #000; background:#fff; opacity:0; transition:.6s ease-in opacity; font: 13px/1 sans-serif; }
 #celestial-date input, #celestial-date select { font:inherit; }
 #celestial-date #yr, #celestial-date #mon { margin: 2px 3px; vertical-align:middle; }
-#celestial-date #left, #celestial-date #right { display:inline-block; width:12px; height:24px; margin:0; vertical-align:-8px; cursor:pointer;  background-image: url('images/dtpick.png'); }
-#celestial-form #day-left, #celestial-form #day-right { display:inline-block; float:none; width:12px; height:24px; margin:0; padding:0; vertical-align:middle; cursor:pointer; border: 0 none; background-color:transparent; background-image: url('images/dtpick.png'); }
+#celestial-date #left, #celestial-date #right { display:inline-block; width:12px; height:24px; margin:0; vertical-align:-8px; cursor:pointer;  }
+#celestial-form #day-left, #celestial-form #day-right { display:inline-block; float:none; width:12px; height:24px; margin:0; padding:0; vertical-align:middle; cursor:pointer; border: 0 none; background-color:transparent; }
 #celestial-form #day-right { position:relative; left:-30px; }
 #celestial-date #left, #celestial-form #day-left { background-position: -8px 0px; }
 #celestial-date #right, #celestial-form #day-right { background-position: -30px 0px; }
@@ -93,7 +92,7 @@ input[type="number"]::-webkit-outer-spin-button { height: auto; }
 #celestial-date #cal { display:inline-block; width:182px; margin:0 4px;  }
 #celestial-date .date { display:inline-block; width:19px; height:14px; border:1px solid #fff; color:#000; font-weight: bold; text-align:right; vertical-align:middle; padding:2px 4px 2px 0; cursor:pointer; }
 #celestial-date .grey { color:#ccc; }
-#celestial-date .weekday { color:#666; font-sixe:11px; background:#eee; border:1px solid #eee; }
+#celestial-date .weekday { color:#666; font-size:11px; background:#eee; border:1px solid #eee; }
 #celestial-date .weekend { color:#f00; }
 #celestial-date .selected { border:1px solid #000; border-radius:3px; }
 #celestial-date .today { background:#ff0; }

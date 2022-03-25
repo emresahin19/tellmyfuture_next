@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Map } from '@esri/react-arcgis';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarker } from "@fortawesome/free-solid-svg-icons";
 
-class MyAwesomeMap extends Component {
+class LocateMap extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -10,18 +12,23 @@ class MyAwesomeMap extends Component {
             longitude: 0,
             latitude: 0,
             mapReady: false,
+            markerx: 0,
+            markery: 0,
         }
     }
 
-    clickHandler = (event) => {
-        const lat = event.mapPoint.latitude;
-        const lon = event.mapPoint.longitude;
+    clickHandler = (e) => {
+        const lat = e.mapPoint.latitude;
+        const lon = e.mapPoint.longitude;
         this.setState({
-            longitude: event.mapPoint.longitude,
-            latitude: event.mapPoint.latitude,
-            map: false
+            longitude: e.mapPoint.longitude,
+            latitude: e.mapPoint.latitude,
+            markerx: e.native.clientX,
+            markery: e.native.clientY,
+            // map: false
         })
         this.props.handlelocate(this.state);
+        console.log(this.state.markerx)
     }
     
     handleMap = async (e) => {
@@ -44,6 +51,9 @@ class MyAwesomeMap extends Component {
         })
         this.props.handlelocate(this.state);
     }
+    handleMark = (e) => {
+        console.log(e);
+    }
     render(){
         return (
             <>
@@ -55,14 +65,21 @@ class MyAwesomeMap extends Component {
                 <div className={this.state.map ? 'show ' : 'unshow '} style={{ width: '100%', height: '100%' }}>
                     <div style={{ width: '100%', height: '100%' }}>
                         {this.state.mapReady ? 
-                            <Map 
-                                viewProperties={{
-                                    center: [this.state.longitude, this.state.latitude], 
-                                    zoom: 10
-                                }} 
-                                onClick={(e) => this.clickHandler(e)}
-                                mapProperties={{ basemap: 'satellite' }}
-                            /> 
+                            <>
+                                <FontAwesomeIcon 
+                                    className={'map-marker ' + (this.state.map ? 'show ' : 'unshow ')}
+                                    icon={ faMapMarker }
+                                    style={{transform: 'translate(' + this.state.markerx +','+ this.state.markery + ')'}}
+                                />
+                                <Map 
+                                    viewProperties={{
+                                        center: [this.state.longitude, this.state.latitude], 
+                                        zoom: 10
+                                    }} 
+                                    onClick={(e) => this.clickHandler(e)}
+                                    mapProperties={{ basemap: 'satellite' }}
+                                />
+                            </>
                             : 
                             <></>
                         }
@@ -72,4 +89,4 @@ class MyAwesomeMap extends Component {
         )
     }
 }
-export default MyAwesomeMap;
+export default LocateMap;

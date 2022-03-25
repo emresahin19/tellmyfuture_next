@@ -1,9 +1,5 @@
 import React, { Component } from "react";
 import Index from "../components/index.js";
-import {
-  Row,
-  Col,
-} from "reactstrap";
 
 class Main extends Component {
   constructor(props){

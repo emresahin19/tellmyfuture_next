@@ -144,7 +144,7 @@ class Calendar extends Component {
     render(){
       return(
           <>
-            <div className={ "calendar " + (( this.state.monthList || this.props.clock || this.props.map ) ? 'unshow' : 'show')}>
+            <div className={ "calendar " + (( this.state.monthList || this.props.clock || this.props.map || this.props.chart ) ? 'unshow' : 'show')}>
               <div className="calendar-header">
                   <a href="#" onClick={this.monthpicker} className="month-picker">{this.state.month ? this.state.month_names[this.state.month] : 'Month'}</a>
                   <div className="year-picker">

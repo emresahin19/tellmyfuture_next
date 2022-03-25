@@ -97,21 +97,21 @@ export default async function Birthday (props){
     var birthDate = props.year + '-' + props.month + '-' + props.day;
     var page=0;
     var finish = true;
-    //getNba(birthDate);
-    //getWhichActor(props.month, props.day);
-    //await getMoive(1, props.year);
+    getNba(birthDate);
+    getWhichActor(props.month, props.day);
+    await getMoive(1, props.year);
 
-    // await moviesByDate.forEach(item => {
-    //     page++;
-    //     if(item.date == birthDate){
-    //         console.log('Your birthday film is ' + item.name);
-    //         finish = false;
-    //     }
-    //     else if(finish && page < movieCounter){
-    //         getMoive(page, props.year);
-    //     }
-    // });
-    // if(finish){
-    //     console.log('There is no movie at your birthday');
-    // }
+    await moviesByDate.forEach(item => {
+        page++;
+        if(item.date == birthDate){
+            console.log('Your birthday film is ' + item.name);
+            finish = false;
+        }
+        else if(finish && page < movieCounter){
+            getMoive(page, props.year);
+        }
+    });
+    if(finish){
+        console.log('There is no movie at your birthday');
+    }
 }

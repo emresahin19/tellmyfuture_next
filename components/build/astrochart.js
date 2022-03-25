@@ -218,8 +218,8 @@ export default function buildChart(data, colors){
 			svg.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
 			svg.setAttribute('style', "position: relative; overflow: hidden;");		
 			svg.setAttribute('version', "1.1");						 				
-			svg.setAttribute('width', '100%');
-			svg.setAttribute('height', '100%');		
+			svg.setAttribute('width', '50%');
+			svg.setAttribute('height', '50%');		
 			svg.setAttribute('viewBox', "0 0 "+ width + " " + height);									
 			document.getElementById( elementId ).appendChild( svg );
 			
@@ -2137,7 +2137,7 @@ export default function buildChart(data, colors){
 		 */
 		astrology.Radix.prototype.addPointsOfInterest = function( points ){
 			
-			for(point in this.points){
+			for(let point in this.points){
 				this.toPoints[ point ] = points[point]; 	
 			}
 							
@@ -2401,7 +2401,7 @@ export default function buildChart(data, colors){
 			//Cusps
 			for (var i = 0, ln = cusps.length; i < ln; i++) {
 				// Lines 			 			 		 		
-				 var startPosition = bottomPosition = astrology.utils.getPointPosition( this.cx, this.cy, this.radius, cusps[i] + this.shift);
+				 var startPosition = astrology.utils.getPointPosition( this.cx, this.cy, this.radius, cusps[i] + this.shift);
 				 var endPosition = astrology.utils.getPointPosition( this.cx, this.cy, this.radius + this.radius/astrology.INNER_CIRCLE_RADIUS_RATIO - this.rulerRadius, cusps[i] + this.shift);
 				 var line = this.paper.line( startPosition.x, startPosition.y, endPosition.x, endPosition.y);
 				 line.setAttribute("stroke", astrology.LINE_COLOR);		 				 				 		
@@ -3367,10 +3367,6 @@ export default function buildChart(data, colors){
 			var yPos = cy + radius * Math.sin( angleInRadius );							  		  			
 			return {x:xPos, y:yPos};
 		};
-		
-		astrology.utils.degreeToRadians = function( degree ){
-			return degrees * Math.PI / 180;
-		};
 	
 		astrology.utils.radiansToDegree = function( radians ){
 			return radians * 180 / Math.PI;
@@ -3695,7 +3691,7 @@ export default function buildChart(data, colors){
 										
 	}( window.astrology = window.astrology || {}));
 	
-	var radix = new astrology.Chart('paper', 496, 496).radix( data );
+	var radix = new window.astrology.Chart('paper', 496, 496).radix( data );
 									
 		radix.addPointsOfInterest( {"As":[data.cusps[0]],"Ic":[data.cusps[3]],"Ds":[data.cusps[6]],"Mc":[data.cusps[9]]});				
 		radix.aspects();

@@ -4,9 +4,11 @@ import Calendar from './calendar';
 import Clock from './clock';
 import Calculate from './calculate';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft, faCog, faCompressAlt, faExpand, faExpandAlt } from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft, faCompressAlt, faExpandAlt } from "@fortawesome/free-solid-svg-icons";
+import Sema from './skymap/sky';
 
 const LocateMap = dynamic(() => import("./map"), { ssr:false })
+
 
 class Main extends Component {
   constructor(props){
@@ -53,16 +55,7 @@ class Main extends Component {
 
   render(){
     return (
-      <div 
-        className={(!this.state.ready ? 'glass' : 'glass-after') + (this.state.fullsc ? ' fullscreen' : '' )}
-      >
-        <span style={this.state.chart ? { opacity: 1 } : { opacity: 0 }}>
-          <FontAwesomeIcon 
-              className={"fullscreen-button"}
-              icon={this.state.fullsc ? faCompressAlt : faExpandAlt }
-              onClick={this.handleFullsc}
-          />
-        </span>
+      <div className={(!this.state.ready ? 'glass' : 'glass-after') + (this.state.chart ? ' fullscreen' : '' )}>
         <span style={this.state.chart ? { opacity: 1 } : { opacity: 0 }}>
           <FontAwesomeIcon 
               className={"back-button"}
@@ -72,6 +65,22 @@ class Main extends Component {
         </span>
         
         <div id="paper" style={this.state.chart ? {} : {display: 'none'}}></div>
+
+        {this.state.chart 
+        ?
+          <Sema
+            lon={this.state.longitude}
+            lat={this.state.latitude}
+            year={this.state.year}
+            month={this.state.month}
+            day={this.state.day}
+            hour={this.state.hour}
+            minute={this.state.minute}
+          />
+        :
+         <></>
+        }
+          
         <Calendar
           handleDate={(dateState) => {
             this.setState({

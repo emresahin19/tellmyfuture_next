@@ -195,7 +195,6 @@ class Options extends Component {
                                                 color={this.state.colors[index].color}
                                             />
                                         </div>
-                                        
                                     </li>
                                 </>
                             )

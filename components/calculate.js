@@ -87,17 +87,17 @@ class Calculate extends Component {
         "NNode":[planetPosition[11]]
       },
       "cusps":[
-        cuspLongitudes[1], 
+        cuspLongitudes[1],
         cuspLongitudes[2],
-        cuspLongitudes[3], 
-        cuspLongitudes[4], 
-        cuspLongitudes[5], 
-        cuspLongitudes[6], 
-        cuspLongitudes[7], 
-        cuspLongitudes[8], 
-        cuspLongitudes[9], 
-        cuspLongitudes[10], 
-        cuspLongitudes[11], 
+        cuspLongitudes[3],
+        cuspLongitudes[4],
+        cuspLongitudes[5],
+        cuspLongitudes[6],
+        cuspLongitudes[7],
+        cuspLongitudes[8],
+        cuspLongitudes[9],
+        cuspLongitudes[10],
+        cuspLongitudes[11],
         cuspLongitudes[12]]
     }
     buildChart(data, colors);
