@@ -12,23 +12,24 @@ class LocateMap extends Component {
             longitude: 0,
             latitude: 0,
             mapReady: false,
-            markerx: 0,
-            markery: 0,
+            marker: false,
+            markerx: -20,
+            markery: -20,
         }
     }
 
     clickHandler = (e) => {
-        const lat = e.mapPoint.latitude;
-        const lon = e.mapPoint.longitude;
+        if(!this.state.marker){
+            this.setState({
+                marker: true,
+            });
+        }
         this.setState({
             longitude: e.mapPoint.longitude,
             latitude: e.mapPoint.latitude,
-            markerx: e.native.clientX,
-            markery: e.native.clientY,
-            // map: false
+            markerx: e.native.layerX - 6,
+            markery: e.native.layerY - 18,
         })
-        this.props.handlelocate(this.state);
-        console.log(this.state.markerx)
     }
     
     handleMap = async (e) => {
@@ -43,16 +44,18 @@ class LocateMap extends Component {
                     longitude: theLon,
                     latitude: theLat,
                 })
-            });
+            },(res => {
+                this.setState({
+                    mapReady: true,
+                });
+            }));
         }
         
         await this.setState({
             map: !this.state.map,
+            marker: !this.state.map,
         })
         this.props.handlelocate(this.state);
-    }
-    handleMark = (e) => {
-        console.log(e);
     }
     render(){
         return (
@@ -67,9 +70,9 @@ class LocateMap extends Component {
                         {this.state.mapReady ? 
                             <>
                                 <FontAwesomeIcon 
-                                    className={'map-marker ' + (this.state.map ? 'show ' : 'unshow ')}
+                                    className={'map-marker ' + (this.state.marker ? 'show ' : 'unshow ')}
                                     icon={ faMapMarker }
-                                    style={{transform: 'translate(' + this.state.markerx +','+ this.state.markery + ')'}}
+                                    style={{left: this.state.markerx +'px', top: this.state.markery + 'px'}}
                                 />
                                 <Map 
                                     viewProperties={{

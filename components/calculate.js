@@ -103,11 +103,11 @@ class Calculate extends Component {
     buildChart(data, colors);
     this.props.handleCalc(this.state);
 
-    Birthday({
-      year: theYear, 
-      month: theMonth < 10 ? ('0' + theMonth) : theMonth, 
-      day: theDay < 10 ? ('0' + theDay) : theDay,
-    })
+    // Birthday({
+    //   year: theYear, 
+    //   month: theMonth < 10 ? ('0' + theMonth) : theMonth, 
+    //   day: theDay < 10 ? ('0' + theDay) : theDay,
+    // })
   }
   
   render(){

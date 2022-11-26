@@ -8,6 +8,7 @@ import { faAngleLeft, faCompressAlt, faExpandAlt } from "@fortawesome/free-solid
 import Sema from './skymap/sky';
 
 const LocateMap = dynamic(() => import("./map"), { ssr:false })
+// const Sema = dynamic(() => import("./skymap/sky"), { ssr:false })
 
 
 class Main extends Component {
@@ -41,11 +42,13 @@ class Main extends Component {
       calendar: true,
     })
   }
+
   handleFullsc = () => {
     this.setState({
       fullsc: !this.state.fullsc
     })
   }
+
   handleBack = () => {
     this.setState({
       callendar: true,
@@ -76,9 +79,10 @@ class Main extends Component {
             day={this.state.day}
             hour={this.state.hour}
             minute={this.state.minute}
+            stars={true}
           />
         :
-         <></>
+          <></>
         }
           
         <Calendar

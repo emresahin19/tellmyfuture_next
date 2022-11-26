@@ -151,7 +151,9 @@ class Calendar extends Component {
                     <Select 
                       defaultValue={this.state.year ? {label: this.state.year} : {label: 'Year'}}
                       classNamePrefix="react-select" 
-                      styles={styleShit} 
+                      styles={styleShit}
+                      id="year-value-select" 
+                      instanceId="year-value-select"
                       options={options}  
                       onChange={this.yearSelect.bind(this)}
                       theme={(theme) => ({
